@@ -33,18 +33,23 @@ struct CardContent: SetCardType {
     var number: Int { _number }
     var colour: ColorType { _colour }
     var shade: FillType  { _shade }
+    var rgbColor: Color {
+        theme.colours[_colour.rawValue]
+    }
     
     // internal private vars
     private var _number: Int
     private var _shape: ShapeType
     private var _shade: FillType
     private var _colour: ColorType
+    private var theme: Theme3
     
-    init(number: Int, shape: ShapeType, shade: FillType, colour: ColorType) {
+    init(theme: Theme3, number: Int, shape: ShapeType, shade: FillType, colour: ColorType) {
         _number = number
         _shape = shape
         _shade = shade
         _colour = colour
+        self.theme = theme
     }
 }
 
@@ -55,7 +60,7 @@ class Shape3SetGame: ObservableObject {
     private static func createSetGame() -> SetGame<Theme3, CardContent> {
         let theme = Theme3(numbers: [1,2,3], shapes: [], fills: [], colours: [.red, .green, .purple])
         return SetGame<Theme3, CardContent>(theme: theme) { (theme, number, colour, shape, shading) -> CardContent in
-            return CardContent(number: number, shape: shape, shade: shading, colour: colour)
+            return CardContent(theme: theme, number: number, shape: shape, shade: shading, colour: colour)
         }
     }
     

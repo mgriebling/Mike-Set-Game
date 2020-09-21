@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		472E7A9325164DFF0040C77C /* Mike_s_SetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472E7A9225164DFF0040C77C /* Mike_s_SetApp.swift */; };
-		472E7A9525164DFF0040C77C /* SetGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472E7A9425164DFF0040C77C /* SetGameView.swift */; };
+		472E7A9525164DFF0040C77C /* Shape3SetGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472E7A9425164DFF0040C77C /* Shape3SetGameView.swift */; };
 		472E7A9725164E0D0040C77C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 472E7A9625164E0D0040C77C /* Assets.xcassets */; };
 		472E7A9A25164E0D0040C77C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 472E7A9925164E0D0040C77C /* Preview Assets.xcassets */; };
 		472E7AA525164E0F0040C77C /* Mike_s_SetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472E7AA425164E0F0040C77C /* Mike_s_SetTests.swift */; };
@@ -44,7 +44,7 @@
 /* Begin PBXFileReference section */
 		472E7A8F25164DFE0040C77C /* Mike's Set.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mike's Set.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		472E7A9225164DFF0040C77C /* Mike_s_SetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mike_s_SetApp.swift; sourceTree = "<group>"; };
-		472E7A9425164DFF0040C77C /* SetGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGameView.swift; sourceTree = "<group>"; };
+		472E7A9425164DFF0040C77C /* Shape3SetGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape3SetGameView.swift; sourceTree = "<group>"; };
 		472E7A9625164E0D0040C77C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		472E7A9925164E0D0040C77C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		472E7A9B25164E0D0040C77C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 				472E7AC5251650350040C77C /* SetGame.swift */,
 				472E7AEE2517895F0040C77C /* SetShape3.swift */,
 				472E7AE9251686990040C77C /* Shape3SetGame.swift */,
-				472E7A9425164DFF0040C77C /* SetGameView.swift */,
+				472E7A9425164DFF0040C77C /* Shape3SetGameView.swift */,
 				472E7ACA2516549F0040C77C /* Theme.swift */,
 				472E7A9625164E0D0040C77C /* Assets.xcassets */,
 				472E7AE4251657EB0040C77C /* Cardify.swift */,
@@ -286,7 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				472E7A9525164DFF0040C77C /* SetGameView.swift in Sources */,
+				472E7A9525164DFF0040C77C /* Shape3SetGameView.swift in Sources */,
 				472E7A9325164DFF0040C77C /* Mike_s_SetApp.swift in Sources */,
 				472E7ACB2516549F0040C77C /* Theme.swift in Sources */,
 				472E7AE5251657EB0040C77C /* Cardify.swift in Sources */,

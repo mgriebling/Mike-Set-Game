@@ -10,12 +10,10 @@ import SwiftUI
 
 struct Cardify: AnimatableModifier {
  
-    var colour: Color
     var rotation: Double
     
-    init(isFaceUp: Bool, colour: Color) {
+    init(isFaceUp: Bool) {
         rotation = isFaceUp ? 0 : 180
-        self.colour = colour
     }
     
     var isFaceUp: Bool { rotation < 90 }
@@ -44,14 +42,14 @@ struct Cardify: AnimatableModifier {
     
     // MARK: - Drawing Constants
     private let cornerRadius: CGFloat = 10
-    private let edgeLineWidth: CGFloat = 3
+    private let edgeLineWidth: CGFloat = 2
     
 }
 
 extension View {
     
-    func cardify(isFaceUp: Bool, colour: Color) -> some View {
-        self.modifier(Cardify(isFaceUp: isFaceUp, colour: colour))
+    func cardify(isFaceUp: Bool) -> some View {
+        self.modifier(Cardify(isFaceUp: isFaceUp))
     }
     
 }

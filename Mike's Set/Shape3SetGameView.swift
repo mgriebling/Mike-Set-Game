@@ -1,5 +1,5 @@
 //
-//  SetGameView.swift
+//  Shape3SetGameView.swift
 //  Mike's Set
 //
 //  Created by Mike Griebling on 2020-09-19.
@@ -52,29 +52,23 @@ struct CardView: View {
     
     @State private var animatedBonusRemaining: Double = 0
     
-//    private func startBonusTimeAnimation() {
-//        animatedBonusRemaining = card.bonusRemaining
-//        withAnimation(.linear(duration: card.bonusTimeRemaining)) {
-//            animatedBonusRemaining = 0
-//        }
-//    }
-    
-    @ViewBuilder
+    // @ViewBuilder
     private func body(for size: CGSize) -> some View {
-        VStack() {
+        let colour = card.content.rgbColor
+        return VStack() {
             ForEach(0 ..< card.content.number)  { _ in
                 if card.content.shade == .none {
                     SetShape3(shape: card.content.shape)
-                        .stroke(Color.blue, lineWidth: 2)
+                        .stroke(colour, lineWidth: 2)
                 } else if card.content.shade == .solid {
                     SetShape3(shape: card.content.shape)
-                        .fill(Color.orange)
+                        .fill(colour)
                 } else {
                     ZStack {
                         SetShape3(shape: card.content.shape)
-                            .fill(Color.orange.opacity(0.3))
+                            .fill(colour.opacity(0.3))
                         SetShape3(shape: card.content.shape)
-                            .stroke(Color.orange, lineWidth: 2)
+                            .stroke(colour, lineWidth: 2)
                     }
                 }
             }
@@ -93,6 +87,9 @@ struct CardView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        Shape3SetGameView(viewModel: Shape3SetGame())
+        let model = Shape3SetGame()
+        model.deal3()
+        model.deal3()
+        return Shape3SetGameView(viewModel: model)
     }
 }
