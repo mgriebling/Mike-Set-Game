@@ -9,10 +9,10 @@ import Foundation
 
 protocol SetCardType {
     
-    var shape: Int { get }
+    var shape: ShapeType { get }
     var number: Int { get }
-    var colour: Int { get }
-    var shade: Int { get }
+    var colour: ColorType { get }
+    var shade: FillType { get }
     
 }
 

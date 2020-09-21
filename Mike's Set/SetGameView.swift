@@ -43,7 +43,6 @@ struct SetGameView: View {
 
 struct CardView: View {
     var card: SetGame<Theme3, CardContent>.Card
-    var theme: Theme3
 
     var body: some View {
         GeometryReader { geometry in
@@ -62,13 +61,25 @@ struct CardView: View {
     
     @ViewBuilder
     private func body(for size: CGSize) -> some View {
-        ZStack {
-            SetShape3(theme: theme, number: card.content.number, shape: card.content.shape, fill: card.content.shade, colour: card.content.colour)
-            Text("🟦")
-                .font(font(for: size))
-                .rotationEffect(Angle.degrees(card.isTouched ? 360: 0))
-                .animation(card.isTouched ? Animation.linear(duration: 1).repeatForever(autoreverses: false) : .default)
+        VStack {
+            ForEach(0 ..< card.content.number)  { _ in
+                if card.content.shade == .none {
+                    SetShape3(shape: card.content.shape)
+                        .stroke(Color.blue, lineWidth: 2)
+                } else if card.content.shade == .solid {
+                    SetShape3(shape: card.content.shape)
+                        .fill(Color.orange)
+                } else {
+                    ZStack {
+                        SetShape3(shape: card.content.shape)
+                            .fill(Color.orange.opacity(0.3))
+                        SetShape3(shape: card.content.shape)
+                            .stroke(Color.orange, lineWidth: 2)
+                    }
+                }
+            }
         }
+        .padding()
         .cardify(isFaceUp: !card.isTouched, colour: Color.blue)
         .transition(AnyTransition.scale)
     }

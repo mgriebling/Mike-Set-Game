@@ -9,15 +9,10 @@ import SwiftUI
 
 struct SetShape3: Shape {
     
-    private var colour: Color
-    private var number: Int
-    private var fill: FillType
+    // shape to be drawn
     private var shape: ShapeType
     
-    init(theme: Theme3, number: Int, shape: ShapeType, fill: FillType, colour: ColorType) {
-        self.colour = theme.colours[colour.rawValue]
-        self.number = theme.numbers[number]
-        self.fill = fill
+    init(shape: ShapeType) {
         self.shape = shape
     }
     
@@ -45,6 +40,7 @@ private struct Diamond : Shape {
         p.addLine(to: right)
         p.addLine(to: bottom)
         p.addLine(to: left)
+        p.addLine(to: start)
         return p
     }
    

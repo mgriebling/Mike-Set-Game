@@ -28,10 +28,11 @@ enum ColorType: Int, CaseIterable {
 }
 
 struct CardContent: SetCardType {
-    var shape: Int  { _shape.rawValue }
+    
+    var shape: ShapeType  { _shape }
     var number: Int { _number }
-    var colour: Int { _colour.rawValue }
-    var shade: Int  { _shade.rawValue }
+    var colour: ColorType { _colour }
+    var shade: FillType  { _shade }
     
     // internal private vars
     private var _number: Int
