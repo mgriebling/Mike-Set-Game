@@ -43,6 +43,7 @@ struct SetGameView: View {
 
 struct CardView: View {
     var card: SetGame<Theme3, CardContent>.Card
+    var theme: Theme3
 
     var body: some View {
         GeometryReader { geometry in
@@ -62,21 +63,10 @@ struct CardView: View {
     @ViewBuilder
     private func body(for size: CGSize) -> some View {
         ZStack {
-//            Group {
-//                if card.isConsumingBonusTime {
-//                    Pie(startAngle: Angle.degrees(0-90), endAngle: Angle.degrees(-animatedBonusRemaining*360-90), clockwise: true)
-//                        .onAppear{
-//                            startBonusTimeAnimation()
-//                        }
-//                } else {
-//                    Pie(startAngle: Angle.degrees(0-90), endAngle: Angle.degrees(-card.bonusRemaining*360-90), clockwise: true)
-//                }
-//            }
-//            .padding(5).opacity(0.4)
-//            .transition(.identity)    // pie just appears
+            SetShape3(theme: theme, number: card.content.number, shape: card.content.shape, fill: card.content.shade, colour: card.content.colour)
             Text("🟦")
                 .font(font(for: size))
-                .rotationEffect(Angle.degrees(card.isMatched ? 360: 0))
+                .rotationEffect(Angle.degrees(card.isTouched ? 360: 0))
                 .animation(card.isTouched ? Animation.linear(duration: 1).repeatForever(autoreverses: false) : .default)
         }
         .cardify(isFaceUp: !card.isTouched, colour: Color.blue)
