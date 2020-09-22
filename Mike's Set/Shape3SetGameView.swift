@@ -14,13 +14,13 @@ struct Shape3SetGameView: View {
         VStack {
             HStack {
                 Spacer()
-                Button("Deal 3") {
+                Button("Deal 3 ") {
                     withAnimation(.easeInOut) {
-                        viewModel.deal3()
+                        viewModel.deal(cards: 3)
 //                        viewModel.newGame()
                     }
                 }
-                .padding()
+             //   .padding()
             }
 //            Text(viewModel.title).font(.title).bold()
             Grid(viewModel.cards) { card in
@@ -29,14 +29,14 @@ struct Shape3SetGameView: View {
                         viewModel.touch(card: card)
                     }
                 }
-                .padding(5)
+                .padding(3)
             }
-            .padding()
+            //.padding()
  //           .foregroundColor(viewModel.colour.first)
             Text("Score: \(viewModel.score)")
                 .font(Font.title).bold()
                 .foregroundColor(.red)
-                .padding()
+                //.padding()
         }
     }
 }
@@ -52,30 +52,41 @@ struct CardView: View {
     
     @State private var animatedBonusRemaining: Double = 0
     
+    private func isVisible(max: Int, id: Int) -> Bool {
+        if max == 1 && id == 1 { return true }
+        if max == 2 && (id == 0 || id == 2) { return true }
+        if max == 3 { return true }
+        return false
+    }
+    
     // @ViewBuilder
     private func body(for size: CGSize) -> some View {
         let colour = card.content.rgbColor
-        return VStack() {
-            ForEach(0 ..< card.content.number)  { _ in
-                if card.content.shade == .none {
-                    SetShape3(shape: card.content.shape)
-                        .stroke(colour, lineWidth: 2)
-                } else if card.content.shade == .solid {
-                    SetShape3(shape: card.content.shape)
-                        .fill(colour)
-                } else {
-                    ZStack {
-                        SetShape3(shape: card.content.shape)
-                            .fill(colour.opacity(0.3))
+        let number = card.content.number
+        let height = (size.height-20) / 3
+        return VStack(spacing:5) {
+            ForEach(0 ..< number)  { id in
+                Group {
+                    if card.content.shade == .none {
                         SetShape3(shape: card.content.shape)
                             .stroke(colour, lineWidth: 2)
+                    } else if card.content.shade == .solid {
+                        SetShape3(shape: card.content.shape)
+                            .fill(colour)
+                    } else {
+                        ZStack {
+                            SetShape3(shape: card.content.shape)
+                                .fill(colour.opacity(0.4))
+                            SetShape3(shape: card.content.shape)
+                                .stroke(colour, lineWidth: 2)
+                        }
                     }
                 }
+                .frame(height: height)
             }
-            .aspectRatio(CGSize(width: 3, height: 2), contentMode: .fit)
+            .aspectRatio(CGSize(width: 6, height: 3), contentMode: .fit)
         }
-        .padding(5)
-        .cardify(isFaceUp: !card.isTouched)
+        .cardify(isFaceUp: true, isTouched: card.isTouched)
         .transition(AnyTransition.scale)
     }
     
@@ -88,8 +99,10 @@ struct CardView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let model = Shape3SetGame()
-        model.deal3()
-        model.deal3()
-        return Shape3SetGameView(viewModel: model)
+        model.deal(cards: 15)
+        return Group {
+            Shape3SetGameView(viewModel: model)
+            Shape3SetGameView(viewModel: model)
+        }
     }
 }

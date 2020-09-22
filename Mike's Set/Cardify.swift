@@ -10,10 +10,12 @@ import SwiftUI
 
 struct Cardify: AnimatableModifier {
  
+    var isTouched: Bool
     var rotation: Double
     
-    init(isFaceUp: Bool) {
+    init(isFaceUp: Bool, isTouched: Bool) {
         rotation = isFaceUp ? 0 : 180
+        self.isTouched = isTouched
     }
     
     var isFaceUp: Bool { rotation < 90 }
@@ -48,8 +50,8 @@ struct Cardify: AnimatableModifier {
 
 extension View {
     
-    func cardify(isFaceUp: Bool) -> some View {
-        self.modifier(Cardify(isFaceUp: isFaceUp))
+    func cardify(isFaceUp: Bool, isTouched: Bool) -> some View {
+        self.modifier(Cardify(isFaceUp: isFaceUp, isTouched: isTouched))
     }
     
 }

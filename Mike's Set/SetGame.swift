@@ -48,13 +48,13 @@ struct SetGame<ThemeType, CardContent:SetCardType> {
     
     mutating func touch(card: Card) {
         if let index = dealt.firstIndex(matching: card), !dealt[index].isTouched, !dealt[index].isMatched {
-            
+            dealt[index].isTouched = !dealt[index].isTouched
         }
     }
     
-    mutating func deal3Cards() {
-        for _ in 1...3 {
-            dealt.append(cards.removeFirst())
+    mutating func deal(cards: Int) {
+        for _ in 1...cards {
+            dealt.append(self.cards.removeFirst())
         }
     }
     

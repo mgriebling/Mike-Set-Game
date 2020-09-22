@@ -73,8 +73,8 @@ class Shape3SetGame: ObservableObject {
         model.touch(card: card)
     }
     
-    func deal3() {
-        model.deal3Cards()
+    func deal(cards: Int) {
+        model.deal(cards: cards)
     }
 }
 
