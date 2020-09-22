@@ -58,7 +58,7 @@ class Shape3SetGame: ObservableObject {
     @Published private var model = Shape3SetGame.createSetGame()
     
     private static func createSetGame() -> SetGame<Theme3, CardContent> {
-        let theme = Theme3(numbers: [1,2,3], shapes: [], fills: [], colours: [.red, .green, .purple])
+        let theme = Theme3(numbers: [1,2,3], shapes: [], fills: [], colours: [.red, .gray, .purple])
         return SetGame<Theme3, CardContent>(theme: theme) { (theme, number, colour, shape, shading) -> CardContent in
             return CardContent(theme: theme, number: number, shape: shape, shade: shading, colour: colour)
         }

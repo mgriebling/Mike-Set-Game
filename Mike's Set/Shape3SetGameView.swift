@@ -31,7 +31,7 @@ struct Shape3SetGameView: View {
                 }
                 .padding(3)
             }
-            //.padding()
+            .padding()
  //           .foregroundColor(viewModel.colour.first)
             Text("Score: \(viewModel.score)")
                 .font(Font.title).bold()
@@ -52,57 +52,41 @@ struct CardView: View {
     
     @State private var animatedBonusRemaining: Double = 0
     
-    private func isVisible(max: Int, id: Int) -> Bool {
-        if max == 1 && id == 1 { return true }
-        if max == 2 && (id == 0 || id == 2) { return true }
-        if max == 3 { return true }
-        return false
-    }
-    
     // @ViewBuilder
     private func body(for size: CGSize) -> some View {
         let colour = card.content.rgbColor
         let number = card.content.number
-        let height = (size.height-20) / 3
-        return VStack(spacing:5) {
+        let shade = card.content.shade
+        let height = size.height / 4
+        let width = min(size.width, height*1.7)
+        print(size.height, size.width)
+        return VStack() {
             ForEach(0 ..< number)  { id in
-                Group {
-                    if card.content.shade == .none {
-                        SetShape3(shape: card.content.shape)
-                            .stroke(colour, lineWidth: 2)
-                    } else if card.content.shade == .solid {
-                        SetShape3(shape: card.content.shape)
-                            .fill(colour)
-                    } else {
-                        ZStack {
-                            SetShape3(shape: card.content.shape)
-                                .fill(colour.opacity(0.4))
-                            SetShape3(shape: card.content.shape)
-                                .stroke(colour, lineWidth: 2)
-                        }
-                    }
+                ZStack {
+                    SetShape3(shape: card.content.shape)
+                        .fill(colour.opacity(shade == .none ? 0 : shade == .solid ? 1 : 0.3))
+                    SetShape3(shape: card.content.shape)
+                        .stroke(colour, lineWidth: 2)
                 }
-                .frame(height: height)
+                .frame(width: width, height: height, alignment: .center)
             }
-            .aspectRatio(CGSize(width: 6, height: 3), contentMode: .fit)
+            //.aspectRatio(CGSize(width: 3, height: 2), contentMode: .fit)
         }
         .cardify(isFaceUp: true, isTouched: card.isTouched)
+        .aspectRatio(2/3, contentMode: .fit)
         .transition(AnyTransition.scale)
     }
     
     // MARK: - Drawing Constants
-    private func font(for size: CGSize) -> Font {
-        Font.system(size: min(size.width, size.height) * 0.7)
-    }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let model = Shape3SetGame()
-        model.deal(cards: 15)
+        model.deal(cards: 7)
         return Group {
             Shape3SetGameView(viewModel: model)
-            Shape3SetGameView(viewModel: model)
+                .previewDevice("iPad Air (4th generation)")
         }
     }
 }

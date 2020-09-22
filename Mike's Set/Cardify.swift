@@ -28,7 +28,7 @@ struct Cardify: AnimatableModifier {
     func body(content: Content) -> some View {
        ZStack {
             Group {
-                RoundedRectangle(cornerRadius: cornerRadius).fill(Color.white)
+                RoundedRectangle(cornerRadius: cornerRadius).fill(isTouched ? Color.yellow : .white)
                 RoundedRectangle(cornerRadius: cornerRadius).stroke(lineWidth: edgeLineWidth)
                 content
             }
