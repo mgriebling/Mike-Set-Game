@@ -85,10 +85,10 @@ struct CardView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let model = Shape3SetGame()
-        model.deal(cards: 10)
+        model.deal(cards: 15)
         return Group {
             Shape3SetGameView(viewModel: model)
-                .previewDevice("iPad Air (4th generation)")
+                .previewDevice("iPad Touch (7th generation)")
         }
     }
 }

@@ -28,7 +28,7 @@ struct SetGame<ThemeType, CardContent:SetCardType> {
     private(set) var score = 0
     
     // Generic set matching function
-    func matchSet<Type:Equatable>(_ a: Type, _ b:Type, _ c:Type) -> Bool {
+    private func matchSet<Type:Equatable>(_ a: Type, _ b:Type, _ c:Type) -> Bool {
         let matchNone = a != b && b != c && a != c
         let matchAll = a == b && b == c // a must be equal to c as well
         return matchAll || matchNone
@@ -47,8 +47,26 @@ struct SetGame<ThemeType, CardContent:SetCardType> {
     }
     
     mutating func touch(card: Card) {
-        if let index = dealt.firstIndex(matching: card), !dealt[index].isTouched, !dealt[index].isMatched {
+        let touchedCards = dealt.filter { (card) -> Bool in
+            card.isTouched
+        }
+        let lessThan3 = touchedCards.count < 3
+        if let index = dealt.firstIndex(matching: card), lessThan3, lessThan3 || !dealt[index].isTouched, !dealt[index].isMatched {
             dealt[index].isTouched = !dealt[index].isTouched
+            if touchedCards.count == 2 && dealt[index].isTouched {
+                // see if there is a match
+                if areMatched(card1: touchedCards.first!, card2: touchedCards.last!, card3: dealt[index]) {
+                    print("Cards are matched!")
+                    dealt.remove(at: index)
+                    dealt.remove(at: dealt.firstIndex(matching: touchedCards.first!)!)
+                    dealt.remove(at: dealt.firstIndex(matching: touchedCards.last!)!)
+                    score += 1
+                } else {
+                    print("Cards are not matched!")
+                    dealt[index].isTouched = false
+                    score -= 1
+                }
+            }
         }
     }
     
