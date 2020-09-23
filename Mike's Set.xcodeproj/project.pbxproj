@@ -22,6 +22,7 @@
 		472E7AE5251657EB0040C77C /* Cardify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472E7AE4251657EB0040C77C /* Cardify.swift */; };
 		472E7AEA251686990040C77C /* Shape3SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472E7AE9251686990040C77C /* Shape3SetGame.swift */; };
 		472E7AEF2517895F0040C77C /* SetShape3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472E7AEE2517895F0040C77C /* SetShape3.swift */; };
+		47516F8D251B53E800E678D1 /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47516F8C251B53E800E678D1 /* Diamond.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		472E7AE4251657EB0040C77C /* Cardify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cardify.swift; sourceTree = "<group>"; };
 		472E7AE9251686990040C77C /* Shape3SetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape3SetGame.swift; sourceTree = "<group>"; };
 		472E7AEE2517895F0040C77C /* SetShape3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetShape3.swift; sourceTree = "<group>"; };
+		47516F8C251B53E800E678D1 /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,9 +117,10 @@
 			children = (
 				472E7A9225164DFF0040C77C /* Mike_s_SetApp.swift */,
 				472E7AC5251650350040C77C /* SetGame.swift */,
-				472E7AEE2517895F0040C77C /* SetShape3.swift */,
 				472E7AE9251686990040C77C /* Shape3SetGame.swift */,
 				472E7A9425164DFF0040C77C /* Shape3SetGameView.swift */,
+				472E7AEE2517895F0040C77C /* SetShape3.swift */,
+				47516F8C251B53E800E678D1 /* Diamond.swift */,
 				472E7ACA2516549F0040C77C /* Theme.swift */,
 				472E7A9625164E0D0040C77C /* Assets.xcassets */,
 				472E7AE4251657EB0040C77C /* Cardify.swift */,
@@ -286,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47516F8D251B53E800E678D1 /* Diamond.swift in Sources */,
 				472E7A9525164DFF0040C77C /* Shape3SetGameView.swift in Sources */,
 				472E7A9325164DFF0040C77C /* Mike_s_SetApp.swift in Sources */,
 				472E7ACB2516549F0040C77C /* Theme.swift in Sources */,
