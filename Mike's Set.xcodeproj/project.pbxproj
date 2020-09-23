@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FB50642251B7D9800507384 /* Shape+Stripe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB50641251B7D9800507384 /* Shape+Stripe.swift */; };
+		2FB50647251B7F9900507384 /* Squiggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB50646251B7F9900507384 /* Squiggle.swift */; };
 		472E7A9325164DFF0040C77C /* Mike_s_SetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472E7A9225164DFF0040C77C /* Mike_s_SetApp.swift */; };
 		472E7A9525164DFF0040C77C /* Shape3SetGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472E7A9425164DFF0040C77C /* Shape3SetGameView.swift */; };
 		472E7A9725164E0D0040C77C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 472E7A9625164E0D0040C77C /* Assets.xcassets */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2FB50641251B7D9800507384 /* Shape+Stripe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shape+Stripe.swift"; sourceTree = "<group>"; };
+		2FB50646251B7F9900507384 /* Squiggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squiggle.swift; sourceTree = "<group>"; };
 		472E7A8F25164DFE0040C77C /* Mike's Set.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mike's Set.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		472E7A9225164DFF0040C77C /* Mike_s_SetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mike_s_SetApp.swift; sourceTree = "<group>"; };
 		472E7A9425164DFF0040C77C /* Shape3SetGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape3SetGameView.swift; sourceTree = "<group>"; };
@@ -119,6 +123,7 @@
 				472E7AC5251650350040C77C /* SetGame.swift */,
 				472E7AE9251686990040C77C /* Shape3SetGame.swift */,
 				472E7A9425164DFF0040C77C /* Shape3SetGameView.swift */,
+				2FB50646251B7F9900507384 /* Squiggle.swift */,
 				472E7AEE2517895F0040C77C /* SetShape3.swift */,
 				47516F8C251B53E800E678D1 /* Diamond.swift */,
 				472E7ACA2516549F0040C77C /* Theme.swift */,
@@ -128,6 +133,7 @@
 				472E7AD5251657570040C77C /* GridLayout.swift */,
 				472E7ADA251657CC0040C77C /* Array+FirstItem.swift */,
 				472E7ADF251657D00040C77C /* Array+Only.swift */,
+				2FB50641251B7D9800507384 /* Shape+Stripe.swift */,
 				472E7A9B25164E0D0040C77C /* Info.plist */,
 				472E7A9825164E0D0040C77C /* Preview Content */,
 			);
@@ -297,7 +303,9 @@
 				472E7AD6251657570040C77C /* GridLayout.swift in Sources */,
 				472E7AC6251650350040C77C /* SetGame.swift in Sources */,
 				472E7AEA251686990040C77C /* Shape3SetGame.swift in Sources */,
+				2FB50647251B7F9900507384 /* Squiggle.swift in Sources */,
 				472E7AC125164F8F0040C77C /* Grid.swift in Sources */,
+				2FB50642251B7D9800507384 /* Shape+Stripe.swift in Sources */,
 				472E7ADB251657CC0040C77C /* Array+FirstItem.swift in Sources */,
 				472E7AE0251657D00040C77C /* Array+Only.swift in Sources */,
 				472E7AEF2517895F0040C77C /* SetShape3.swift in Sources */,

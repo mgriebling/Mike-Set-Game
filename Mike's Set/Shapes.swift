@@ -50,6 +50,7 @@ public class Shapes : NSObject {
 
 
         //// Bezier Drawing
+        //CGRect(x: 0, y: 0, width: 568, height: 281),
         let bezierPath = UIBezierPath()
         bezierPath.move(to: CGPoint(x: 233.5, y: 120.5))
         bezierPath.addCurve(to: CGPoint(x: 247.5, y: 87.5), controlPoint1: CGPoint(x: 233.5, y: 120.5), controlPoint2: CGPoint(x: 227.5, y: 100.5))

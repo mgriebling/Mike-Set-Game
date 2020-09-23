@@ -21,7 +21,7 @@ struct SetShape3: Shape {
         switch shape {
         case .oval: p = Capsule(style: .circular).path(in: rect)
         case .diamond: p = Diamond().path(in: rect)
-        case .squiggle: p = RoundedRectangle(cornerRadius: 0).path(in: rect)
+        case .squiggle: p = Squiggle().path(in: rect)
         }
         return p
     }
