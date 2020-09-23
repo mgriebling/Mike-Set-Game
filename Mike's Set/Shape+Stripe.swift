@@ -12,7 +12,7 @@ extension CGImage {
     
     static func generateStripePattern(
         colors: (UIColor, UIColor) = (.clear, .black),
-        width: CGFloat = 6,
+        width: CGFloat = 4,
         ratio: CGFloat = 1) -> CGImage? {
         
         let context = CIContext()
