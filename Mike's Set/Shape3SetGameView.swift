@@ -12,31 +12,31 @@ struct Shape3SetGameView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                Spacer()
-                Button("Deal 3 ") {
-                    withAnimation(.easeInOut) {
-                        viewModel.deal(cards: 3)
-//                        viewModel.newGame()
-                    }
-                }
-             //   .padding()
-            }
-//            Text(viewModel.title).font(.title).bold()
+            Text("Mike's Set Game").font(.title).bold()
             Grid(viewModel.cards) { card in
                 CardView(card: card).onTapGesture {
                     withAnimation(.linear(duration: 0.75)) {
                         viewModel.touch(card: card)
                     }
                 }
-                .padding(3)
+                .padding(5)
             }
-            .padding()
- //           .foregroundColor(viewModel.colour.first)
-            Text("Score: \(viewModel.score)")
-                .font(Font.title).bold()
-                .foregroundColor(.red)
-                //.padding()
+            .padding(5)
+            HStack(alignment: .firstTextBaseline) {
+                Spacer()
+                Spacer()
+                Text("Score: \(viewModel.score)")
+                    .font(Font.title).bold()
+                    .foregroundColor(.red)
+                    .padding(.bottom)
+                Spacer()
+                Button("Deal 3") {
+                    withAnimation(.easeInOut) {
+                        viewModel.deal(cards: 3)
+                    }
+                }
+                .padding(.trailing)
+            }
         }
     }
 }
