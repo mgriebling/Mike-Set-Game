@@ -76,5 +76,13 @@ class Shape3SetGame: ObservableObject {
     func deal(cards: Int) {
         model.deal(cards: cards)
     }
+    
+    func makeVisible() {
+        model.makeVisible()
+    }
+    
+    func newGame() {
+        model = Shape3SetGame.createSetGame()
+    }
 }
 

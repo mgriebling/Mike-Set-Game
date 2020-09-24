@@ -57,10 +57,13 @@ struct SetGame<ThemeType, CardContent:SetCardType> {
                 // see if there is a match
                 if areMatched(card1: touchedCards.first!, card2: touchedCards.last!, card3: dealt[index]) {
                     print("Cards are matched!")
+                    dealt[index].isVisible = false
+                    dealt[dealt.firstIndex(matching: touchedCards.first!)!].isVisible = false
+                    dealt[dealt.firstIndex(matching: touchedCards.last!)!].isVisible = false
                     dealt.remove(at: index)
                     dealt.remove(at: dealt.firstIndex(matching: touchedCards.first!)!)
                     dealt.remove(at: dealt.firstIndex(matching: touchedCards.last!)!)
-                    score += 1
+                    score += 2
                 } else {
                     print("Cards are not matched!")
                     dealt[index].isTouched = false
@@ -73,6 +76,12 @@ struct SetGame<ThemeType, CardContent:SetCardType> {
     mutating func deal(cards: Int) {
         for _ in 1...cards {
             dealt.append(self.cards.removeFirst())
+        }
+    }
+    
+    mutating func makeVisible() {
+        for (index, _) in dealt.enumerated() {
+            dealt[index].isVisible = true
         }
     }
     
@@ -98,6 +107,7 @@ struct SetGame<ThemeType, CardContent:SetCardType> {
         var id: Int
         var isMatched = false
         var isTouched = false
+        var isVisible = false
         var content: CardContent
     }
     

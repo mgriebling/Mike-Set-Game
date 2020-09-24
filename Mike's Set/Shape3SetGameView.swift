@@ -15,27 +15,38 @@ struct Shape3SetGameView: View {
             Text("Mike's Set Game").font(.title).bold()
             Grid(viewModel.cards) { card in
                 CardView(card: card).onTapGesture {
-                    withAnimation(.linear(duration: 0.75)) {
+                    withAnimation(.linear) {
                         viewModel.touch(card: card)
                     }
                 }
+        
+                //.transition(.offset(x: visible ? 0 : 10000, y: visible ? 0 : 10000))
                 .padding(5)
             }
             .padding(5)
+            .transition(.scale)
             HStack(alignment: .firstTextBaseline) {
-                Spacer()
-                Spacer()
+                Button("New Game") {
+                    withAnimation(.easeInOut) {
+                        viewModel.newGame()
+                    }
+                }
                 Text("Score: \(viewModel.score)")
                     .font(Font.title).bold()
                     .foregroundColor(.red)
                     .padding(.bottom)
-                Spacer()
-                Button("Deal 3") {
-                    withAnimation(.easeInOut) {
-                        viewModel.deal(cards: 3)
+                Button("Deal 3 Cards") {
+                    viewModel.deal(cards: 3)
+                    withAnimation(Animation.easeInOut) {
+                        viewModel.makeVisible()
                     }
                 }
-                .padding(.trailing)
+            }
+        }
+        .onAppear {
+            viewModel.deal(cards: 12)
+            withAnimation(Animation.easeInOut(duration: 2).delay(1)) {
+                viewModel.makeVisible()
             }
         }
     }
@@ -51,6 +62,10 @@ struct CardView: View {
     }
     
     @State private var animatedBonusRemaining: Double = 0
+    
+    private func random() -> CGFloat {
+        CGFloat.random(in: CGFloat.greatestFiniteMagnitude/2...CGFloat.greatestFiniteMagnitude)
+    }
     
     // @ViewBuilder
     private func body(for size: CGSize) -> some View {
@@ -74,9 +89,14 @@ struct CardView: View {
                 .frame(width: 2*height, height: height)
             }
         }
-        .cardify(isFaceUp: true, isTouched: card.isTouched)
+//        .transition(.offset(x: card.isVisible ? 0 : 10000, y: card.isVisible ? 0 : 10000))
+//        .animation(.easeInOut(duration: 1))
+        // .offset(card.visible ? CGPoint.zero : CGPoint(x: 1000, y: 1000))
+        .cardify(isFaceUp: true, isTouched: card.isTouched, isVisible: card.isVisible)
         .aspectRatio(2/3, contentMode: .fit)
-        .transition(AnyTransition.scale)
+
+        //.transition(AnyTransition.offset(x: card.isVisible ? 0 : 15000, y: card.isVisible ? 0 : 15000).animation(.easeIn(duration: 3)))
+        //.transition(AnyTransition.scale)
     }
     
     // MARK: - Drawing Constants
@@ -85,7 +105,6 @@ struct CardView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let model = Shape3SetGame()
-        model.deal(cards: 15)
         return Group {
             Shape3SetGameView(viewModel: model)
                 .previewDevice("iPad Touch (7th generation)")
